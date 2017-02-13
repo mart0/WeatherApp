@@ -1,3 +1,3 @@
-Build a web appand an APIEndpoint using Appcelerator Arrow. 
+Build a web app and an API Endpoint using Appcelerator Arrow. 
 The Endpoint should return the 5 day forecast, 
-while the web app will have todisplay this informationto the user.
+while the web app will have to display this information to the user.
