@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WeatherApp</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<% var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %>
+<% var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] %>
+
+  <div class="mainHeader"> 
+    <h1>What Should I Wear?</h1>
+    <h2>(Women only! Real men don't care about the weather!!)</h2>
+    <p>See what will be the weather in: </p>
+
+    <form method="get">
+      <div class="searchMenu">
+        <input class="searchPanel" name="q" type="text">
+        <input class="searchButton" name="submit" value="Go!" type="submit">
+      </div>
+    </form>
+  </div>
+
+<% for (day in list) { %>
+  <% var date = new Date(day); %>
+  <div class="header">
+    <div class="header-top">
+
+        <div class="header-head">
+            <div class="bottom-head">
+                <div class="half">
+                   <div><%= city.name %></div>
+                   <div class="tempForTheDay">
+                    <%= 
+                      (list[day].average_temp).toFixed() === '-0' ? '0' : (list[day].average_temp).toFixed() 
+                    %>°
+                   </div>
+                   <div class="date"><%= months[date.getMonth()] %> <%= date.getDate()%></div>
+                </div>
+
+                <div class="half">
+                  <div>Max: 
+                    <%= 
+                      (list[day].max_temp).toFixed() === '-0' ? '0' : (list[day].max_temp).toFixed() 
+                    %>°
+                  </div>
+                  <div>Min: 
+                    <%= 
+                      (list[day].min_temp).toFixed() === '-0' ? '0' : (list[day].min_temp).toFixed()
+                    %>°
+                  </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="clear"> </div>
+
+  </div>
+<% }%>
+
+</body>
+</html>
