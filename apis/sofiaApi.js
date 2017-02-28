@@ -1,28 +1,20 @@
 var Arrow = require('arrow'),
 Model = Arrow.Model,
 Logger = Arrow.createLogger(),
-SofiaModels = Model.getModel('sofiaModel');
+CoonectorModel = Model.getModel('connectorModel');
 
 function mapForecast (forecast) {
     let dayList = {};
 
     forecast.forEach((element, index) => {
-        let day = element.dt_txt.substring(0,10);
-        let hour = element.dt_txt.substring(11);
-        // console.log(element.dt_txt);
-        // console.log(element.main.temp);
-        // console.log(element.main.temp_max);
-        // console.log(element.main.temp_min);
-        // console.log("#################");
 
-        if (hour.indexOf('15') === -1) {
-            return;
-        }
+        var day = new Date(element.dt);
 
-        var currentDayModel = SofiaModels.instance({
-                              average_temp: element.main.temp,
-                              max_temp: element.main.temp_max, 
-                              min_temp: element.main.temp_min});
+        var currentDayModel = CoonectorModel.instance({
+                                average_temp: element.temp.day,
+                                max_temp: element.temp.max, 
+                                min_temp: element.temp.min
+                            }); 
 
         // Fill the dayList collection with 5 instances of the SofiaModel
         dayList[day] = currentDayModel;
@@ -38,7 +30,7 @@ var SofiaAPI = Arrow.API.extend({
     path: '/api/forecast/:q',
     method: 'GET',
     description: 'Make internal call to get 5 day forecast',
-    model: 'sofiaModel',
+    model: 'connectorModel',
     parameters: {
         q: {description: 'City name', required: true}
     },
@@ -48,7 +40,7 @@ var SofiaAPI = Arrow.API.extend({
 
         let options = {
             host: 'api.openweathermap.org',
-            path: `/data/2.5/forecast?q=${request.params.q}&appid=${openWeatherAPPID}&units=metric`,
+            path: `/data/2.5/forecast/daily?q=${request.params.q}&appid=${openWeatherAPPID}&units=metric&cnt=5`,
             method: 'GET',
         }
         http.request(options, (res) => {

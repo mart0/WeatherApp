@@ -19,11 +19,11 @@ module.exports = {
 	// NODE_ENV=production appc run
 	//
 	// production key, this is the key that will be required when you are running in production
-	apikey_production: 'bJ7sbvt7d8+TDxzTSJ7WryS1R+f1u77I',
+	apikey_production: 'VV6PB06mTgZ70V4unwkkxPegfu8r8LnG',
 	// development key, this is the key that will be required when you are testing non-production (such as locally)
-	apikey_development: 'NPztPCSe9ib0fzUC0ThdHrYCutlcy8kp',
+	apikey_development: '+wLKhFSu7Wo3uiut+XuyvAuNctkPztp4',
 	// preproduction key, this is the key that will be required when you are testing non-production (such as locally)
-	apikey_preproduction: 'TEfSxG0Q5v1eEFQyAcUaTQbzY02UQZMf',
+	apikey_preproduction: 'kes15vqlqwFACWAqp2H0qwdhv3a3TxqZ',
 
 	// by default the authentication strategy is 'basic' which will use HTTP Basic Authorization where the
 	// usename is the key and the password is blank.  the other option is 'apikey' where the value of the
@@ -65,38 +65,35 @@ module.exports = {
 		// when in production (still respects enabled above)
 		enableAdminInProduction: false,
 		// set the email addresses you want to be able to log in to the admin website
-		validEmails: ["marinov9210@gmail.com"],
+		validEmails: ["mamarinov@axway.com"],
 		// set the organization ids you want to be able to log in to the admin website
-		validOrgs: [100143231],
-		// Custom error page for unauthorized access (HTTP 401 error code)
-    	customHTMLErrorPage: '<p>No, no, no...fuck</p>'
+		validOrgs: [580050759483128]
 	},
 
 	// you can generally leave this as-is since it is generated for each new project you created.
 	session: {
 		encryptionAlgorithm: 'aes256',
-		encryptionKey: 'VBzoJZ3e2NUFU4Q63KS3m7kRBjoENNNlgd3OdaiCTyI=',
+		encryptionKey: 'KLZ+lnrBSEzYS/9kzy4l4rv6VnUKe/cI2xyO3hMgvPs=',
 		signatureAlgorithm: 'sha512-drop256',
-		signatureKey: 'zkTFdfCS7rHxhZMtYxYbgXEU3i2M6mNAcbNvBVSfD6hMV6aB1RjN8tnyTQ7yzxQ80CUe8q3g5DZqK3ZZaWeOQA==',
-		secret: 'fEmrzixVNCrD+BL0Etcvva/7/StJzA6J', // should be a large unguessable string
+		signatureKey: 'BbLcvUeK/zb11nf3gsJt2QFlyucffGTirj4NZW2/da3AtahZs6UhQM5XN5/mB3XWhFc5bOiOsEMn9E/odH5HiQ==',
+		secret: 'HcO5PEEwgtVajzee35VROe+toaISIpDb', // should be a large unguessable string
 		duration: 86400000, // how long the session will stay valid in ms
 		activeDuration: 300000 // if expiresIn < activeDuration, the session will be extended by activeDuration milliseconds
 	},
 
 	// if you want signed cookies, you can set this value. if you don't want signed cookies, remove or make null
-	cookieSecret: 'McJYEMcyNzX4F4UijJZ5Kb7qRktWEa9L',
+	cookieSecret: 'SL6Naul/YQPN2f+QWo3gUv7qXIzvbEQd',
 
 	// your connector configuration goes here
 	connectors: {
-		'appc.mysql': {
-			connectionPooling: true,
-			connectionLimit: 10,
-
-			database: 'test',
-			user: 'root',
-			password: '',
-			host: 'localhost',
-			port: 3306
+		'com.connector.owa': {
+            modelAutogen: true,
+            openWeatherApiUrl : 'http://api.openweathermap.org/data/2.5/',
+            town : "Sofia",
+			numberOfDays: 5,
+			unitsFOrmat: "metric",
+			dataFormat: "json",
+            apikey : "dc98411c082bfb665d92c4e337b1b562",
 		}
 	},
 

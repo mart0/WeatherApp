@@ -23,4 +23,4 @@ var ForecastRoute = Arrow.Router.extend({
 	}
 });
 
-module.exports = ForecastRoute;		
+module.exports = ForecastRoute;
