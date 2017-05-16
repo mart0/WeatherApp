@@ -1,34 +1,51 @@
 {
-    "name": "com.connector.owa",
-    "description": "",
-    "version": "1.0.0",
-    "author": "Martin Marinov",
-    "license": "",
-    "framework": "none",
-    "keywords": [
-        "appcelerator",
-        "arrow"
+  "name": "com.connector.owa",
+  "description": "",
+  "version": "1.0.0",
+  "author": "Martin Marinov",
+  "license": "",
+  "framework": "none",
+  "keywords": [
+    "appcelerator",
+    "arrow"
+  ],
+  "repository": {},
+  "private": true,
+  "dependencies": {
+    "async": "^1.5.0",
+    "lodash": "^3.10.1",
+    "pkginfo": "^0.3.1",
+    "semver": "^5.0.3"
+  },
+  "devDependencies": {
+    "arrow": "^*",
+    "grunt": "^0.4.5",
+    "grunt-appc-js": "^1.0.19",
+    "grunt-contrib-clean": "^0.7.0",
+    "grunt-mocha-istanbul": "^3.0.1",
+    "istanbul": "^0.4.1",
+    "mocha": "^2.3.4",
+    "should": "^8.0.2",
+    "standard": "^10.0.2"
+  },
+  "scripts": {
+    "start": "appc run -l debug",
+    "test": "npm run lint && npm run test:unit && npm run security",
+    "test-dev": "npm run lint && npm run test:unit",
+    "test:unit": "tap test/unit/*.js test/unit/lifecycle/*.js test/unit/methods/*.js --color --bail --cov",
+    "test:integration": "tap test/integration/*.js test/integration/lifecycle/*.js --color --bail --cov",
+    "security": "retire --exitwith 0 --outputpath scan-retire.txt && nsp check --output writefile --warn-only",
+    "lint": "standard | snazzy",
+    "lint-fix": "standard --fix | snazzy",
+    "precommit": "npm run lint"
+  },
+  "standard": {
+    "ignore": [
+      ".nyc_output",
+      ".vscode",
+      "coverage",
+      "node_modules"
     ],
-    "repository": {},
-    "private": true,
-    "dependencies": {
-        "async": "^1.5.0",
-        "lodash": "^3.10.1",
-        "pkginfo": "^0.3.1",
-        "semver": "^5.0.3"
-    },
-    "devDependencies": {
-        "grunt": "^0.4.5",
-        "grunt-appc-js": "^1.0.19",
-        "grunt-contrib-clean": "^0.7.0",
-        "grunt-mocha-istanbul": "^3.0.1",
-        "istanbul": "^0.4.1",
-        "mocha": "^2.3.4",
-        "should": "^8.0.2",
-        "arrow": "^*"
-    },
-    "scripts": {
-        "start": "appc run",
-        "test": "grunt"
-    }
+    "no-trailing-whitespace": [true, "ignore-comments"]
+  }
 }

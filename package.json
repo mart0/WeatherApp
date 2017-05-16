@@ -17,23 +17,35 @@
     "pkginfo": "^0.3.1"
   },
   "devDependencies": {
+    "arrow": "^*",
     "grunt": "^0.4.5",
     "grunt-appc-js": "^1.0.19",
     "grunt-contrib-clean": "^0.7.0",
     "grunt-mocha-istanbul": "^3.0.1",
     "istanbul": "^0.4.1",
     "mocha": "^2.3.4",
+    "request": "^2.67.0",
     "should": "^8.0.2",
-    "arrow": "^*",
-    "request": "^2.67.0"
+    "standard": "^10.0.2",
+    "tap": "^10.3.2"
   },
   "main": "app.js",
   "healthCheck": true,
   "scripts": {
-    "start": "appc run",
-    "test": "grunt"
+    "start": "appc run -l debug",
+    "test": "npm run lint && npm run test --color --bail --cov",
+    "lint": "standard | snazzy",
+    "lint-fix": "standard --fix | snazzy"
   },
   "engines": {
     "node": "6.9.3"
+  },
+  "standard": {
+    "ignore": [
+      ".nyc_output",
+      ".vscode",
+      "coverage",
+      "node_modules"
+    ]
   }
 }
