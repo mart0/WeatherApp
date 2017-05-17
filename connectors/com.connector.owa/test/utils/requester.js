@@ -1,11 +1,11 @@
-const request = require('request')
+var request = require('request')
 
 module.exports = (appConfig) => {
   appConfig = appConfig || {}
-  const port = appConfig.port || 8080
-  const baseUrl = `http://localhost:${port}`
-  const apiPrefix = appConfig.apiPrefix || '/api'
-  const url = `${baseUrl}${apiPrefix}`
+  var port = appConfig.port || 8080
+  var baseUrl = `http://localhost:${port}`
+  var apiPrefix = appConfig.apiPrefix || '/api'
+  var url = `${baseUrl}${apiPrefix}`
 
   return {
     getData: (options, callback) => {
@@ -35,13 +35,13 @@ module.exports = (appConfig) => {
   }
 
   function createRequestOptions (options) {
-    const requestOptions = {
+    var requestOptions = {
       uri: options.uri || `${url}/${options.model}`,
       method: options.method || 'GET',
       json: true,
       body: options.body || {}
     }
-    const defaultAuth = {
+    var defaultAuth = {
       user: appConfig.apikey
     }
 

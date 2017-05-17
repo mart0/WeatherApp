@@ -14,6 +14,7 @@
   "dependencies": {
     "async": "^1.5.0",
     "ejs": "^2.5.5",
+    "moment": "^2.18.1",
     "pkginfo": "^0.3.1"
   },
   "devDependencies": {
@@ -22,6 +23,7 @@
     "grunt-appc-js": "^1.0.19",
     "grunt-contrib-clean": "^0.7.0",
     "grunt-mocha-istanbul": "^3.0.1",
+    "husky": "^0.13.3",
     "istanbul": "^0.4.1",
     "mocha": "^2.3.4",
     "request": "^2.67.0",
@@ -35,7 +37,8 @@
     "start": "appc run -l debug",
     "test": "npm run lint && npm run test --color --bail --cov",
     "lint": "standard | snazzy",
-    "lint-fix": "standard --fix | snazzy"
+    "lint-fix": "standard --fix | snazzy",
+    "precommit": "npm run lint"
   },
   "engines": {
     "node": "6.9.3"

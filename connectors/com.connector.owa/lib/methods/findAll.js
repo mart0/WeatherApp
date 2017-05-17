@@ -1,5 +1,3 @@
-// var Arrow = require('arrow')
-// var ORMError = Arrow.ORMError
 var request = require('request')
 
 exports.findAll = function findAll (Model, callback) {

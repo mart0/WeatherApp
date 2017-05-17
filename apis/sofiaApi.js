@@ -1,13 +1,12 @@
 var Arrow = require('arrow')
 var Model = Arrow.Model
-// var Logger = Arrow.createLogger()
 var CoonectorModel = Model.getModel('connectorModel')
 
 function mapForecast (forecast) {
   let dayList = {}
 
   forecast.forEach((element, index) => {
-    var day = new Date(element.dt)
+    var day = new Date(element.dt * 1000)
     var currentDayModel = CoonectorModel.instance({
       average_temp: element.temp.day,
       max_temp: element.temp.max,
@@ -44,7 +43,7 @@ var SofiaAPI = Arrow.API.extend({
     http.request(options, (res) => {
       let forecastData = ''
       res.setEncoding('utf8')
-      res.on('data', (chunk) => forecastData += chunk)
+      res.on('data', (chunk) => (forecastData += chunk))
       res.on('end', () => {
         response.setHeader('Content-Type', 'application/json')
         let parsedData = JSON.parse(forecastData)

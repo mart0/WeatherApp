@@ -1,7 +1,7 @@
-// const Arrow = require('arrow')
-const connectorName = 'com.connector.owa'
+// var Arrow = require('arrow')
+var connectorName = 'com.connector.owa'
 
-const models = {
+var models = {
   connectorModel: `${connectorName}/connectorModel`
 }
 

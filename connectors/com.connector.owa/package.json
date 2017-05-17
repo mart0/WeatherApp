@@ -14,6 +14,7 @@
   "dependencies": {
     "async": "^1.5.0",
     "lodash": "^3.10.1",
+    "moment": "^2.18.1",
     "pkginfo": "^0.3.1",
     "semver": "^5.0.3"
   },
@@ -46,6 +47,9 @@
       "coverage",
       "node_modules"
     ],
-    "no-trailing-whitespace": [true, "ignore-comments"]
+    "no-trailing-whitespace": [
+      true,
+      "ignore-comments"
+    ]
   }
 }
